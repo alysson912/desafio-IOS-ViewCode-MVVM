@@ -14,7 +14,7 @@ protocol HomeVCDelegate: AnyObject {
 class HomeVC: UIViewController {
     
     private var screen: HomeScreen?
-    private var viewModel = MenuProfileViewModel()
+    private var viewModel = ListViewModel()
     
     
     private var delegate: HomeVCDelegate?

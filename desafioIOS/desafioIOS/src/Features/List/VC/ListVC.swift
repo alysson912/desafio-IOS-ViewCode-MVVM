@@ -10,7 +10,6 @@ class ListVC: UIViewController {
     
     private var screen: ListScreen?
     
-    
     override func loadView() {
         screen = ListScreen()
         view = screen
@@ -22,7 +21,6 @@ class ListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         screen?.delegate(delegate: self)
         screen?.configTableView(delegate: self, dataSource: self)
     }
@@ -66,8 +64,5 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
 
 extension ListVC: HomeVCDelegate { // recebendo dados da tela anterior 
     func getInputUser() {
-        
     }
-    
-    
 }

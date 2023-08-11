@@ -16,19 +16,13 @@ protocol MenuProfileViewModelDelegate: AnyObject {
     func error(_ message: String)
 }
 
-class MenuProfileViewModel {
+class ListViewModel {
 
     private let service: MenuProfileService = MenuProfileService()
     private weak var delegate: MenuProfileViewModelDelegate?
     
     private  var data: [Datum] = []
 
-    
-    // TODO: CRIAR FUNC PARA LEVAR OS DADOS PARA CELL
-    
-    
-   
-    
     public func delegate(delegate: MenuProfileViewModelDelegate?){
         self.delegate = delegate
     }
@@ -48,10 +42,6 @@ class MenuProfileViewModel {
         }
     }
     
-    public func loadCurrent(indexPath: IndexPath) -> PurpleData {
-        return data.filter { Datum in
-            true
-        }
-    }
+
     
 }
