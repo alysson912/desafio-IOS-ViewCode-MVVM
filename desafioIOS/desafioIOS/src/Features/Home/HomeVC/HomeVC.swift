@@ -7,10 +7,29 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+protocol HomeVCDelegate: AnyObject {
+    func  getInputUser()
+}
 
+class HomeVC: UIViewController {
+    
     private var screen: HomeScreen?
     private var viewModel = MenuProfileViewModel()
+    
+    
+    private var delegate: HomeVCDelegate?
+    
+    public func delegate(delegate: HomeVCDelegate?){
+        self.delegate = delegate
+    }
+    
+    
+    // levando input user para tela seguinte atraves de protocolo
+    private var coutry, holiday: String?
+    func getInputUser(coutry: String, holiday: String) {
+        self.coutry = coutry
+        self.holiday = holiday
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -28,16 +47,13 @@ class HomeVC: UIViewController {
         screen?.configTextFieldDelegate(delegate: self)
         viewModel.fetch(.request)
     }
-
-
+    
+    
 }
 
 extension HomeVC: UITextFieldDelegate {
-    
-    
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        self.loginScreen?.validarTextFields()
+        //        self.loginScreen?.validarTextFields()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //print( "textFieldShouldReturn")

@@ -141,8 +141,8 @@
 		3880F30C2A840A960078E609 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3880F3242A8433030078E609 /* HomeViewModel */,
 				3880F3092A8409D60078E609 /* Model */,
+				3880F3242A8433030078E609 /* HomeViewModel */,
 				3880F30E2A840AA30078E609 /* HomeScreen */,
 				3880F30D2A840A9D0078E609 /* HomeVC */,
 			);
