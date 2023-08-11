@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 
+// protocolo para enviar a responsabilidade de logica do botao para HomeVC
 protocol HomeScreenProtocol: AnyObject {
     func tappedButton()
 }
@@ -19,7 +20,7 @@ class HomeScreen: UIView {
         func delegate(delegate : HomeScreenProtocol?){
             self.delegate = delegate
         }
-
+//backgorund
     lazy var subImageView : UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +29,7 @@ class HomeScreen: UIView {
         return image
     }()
     
-    
+    // containter para armazenar a animação da tela
     lazy var containerAnimationView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -116,9 +117,10 @@ class HomeScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //constraints 
     private func setupConstraints(){
         NSLayoutConstraint.activate([
-//
+
             subImageView.topAnchor.constraint(equalTo: topAnchor),
             subImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             subImageView.trailingAnchor.constraint(equalTo: trailingAnchor),

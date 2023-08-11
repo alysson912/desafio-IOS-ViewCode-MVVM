@@ -61,7 +61,6 @@ class ListScreen: UIView {
         tableView.dataSource = dataSource
     }
     
-    
     private func addViews(){
         addSubview(subImageView)
         addSubview(backButton)
@@ -92,7 +91,6 @@ class ListScreen: UIView {
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             backButton.heightAnchor.constraint(equalToConstant: 45),
             backButton.widthAnchor.constraint(equalToConstant: 45),
-            
             
             tableView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 25),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),

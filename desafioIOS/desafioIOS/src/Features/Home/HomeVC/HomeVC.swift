@@ -15,8 +15,6 @@ class HomeVC: UIViewController {
     
     private var screen: HomeScreen?
     private var viewModel = ListViewModel()
-    
-    
     private var delegate: HomeVCDelegate?
     
     public func delegate(delegate: HomeVCDelegate?){
@@ -31,6 +29,7 @@ class HomeVC: UIViewController {
         self.holiday = holiday
     }
     
+    // escondendo navigation
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
@@ -40,10 +39,9 @@ class HomeVC: UIViewController {
         view = screen
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        screen?.delegate(delegate: self)
+        screen?.delegate(delegate: self) // assinando protocolos, a classe atual é quem assinará
         screen?.configTextFieldDelegate(delegate: self)
         viewModel.fetch(.request)
     }
@@ -51,23 +49,20 @@ class HomeVC: UIViewController {
     
 }
 
+// entrando em conformidade com os protocolos da textfield e actionButton
+
 extension HomeVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //        self.loginScreen?.validarTextFields()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //print( "textFieldShouldReturn")
         textField.resignFirstResponder()
         
         return true
     }}
 
-extension HomeVC: HomeScreenProtocol {
+extension HomeVC: HomeScreenProtocol { // action button
     func tappedButton() {
         let vc = ListVC()
-        
         navigationController?.pushViewController(vc, animated: true )
     }
-    
-    
 }
