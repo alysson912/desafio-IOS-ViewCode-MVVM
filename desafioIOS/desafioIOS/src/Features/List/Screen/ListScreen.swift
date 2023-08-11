@@ -19,6 +19,14 @@ class ListScreen: UIView {
         self.delegate = delegate
     }
     
+    lazy var subImageView : UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage( named: LC.subImageView.text )
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
     lazy var backButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -39,10 +47,12 @@ class ListScreen: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none // retirando linhas
         tableView.showsVerticalScrollIndicator = false // desativando scrool indicator
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius =  8
         // TO DO: Register
         tableView.register(HolidayListTableViewCell.self, forCellReuseIdentifier: HolidayListTableViewCell.identifier)
         tableView.backgroundColor = .white //UIColor(red: 26/255, green: 26/255, blue: 1/255, alpha: 1.0)
-        
+   
         return tableView
     }()
     
@@ -53,7 +63,7 @@ class ListScreen: UIView {
     
     
     private func addViews(){
-        
+        addSubview(subImageView)
         addSubview(backButton)
         addSubview(tableView)
     }
@@ -72,6 +82,11 @@ class ListScreen: UIView {
     
     private func setupConstraints(){
         NSLayoutConstraint.activate([
+            
+            subImageView.topAnchor.constraint(equalTo: topAnchor),
+            subImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

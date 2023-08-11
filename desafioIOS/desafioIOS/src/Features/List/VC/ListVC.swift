@@ -9,7 +9,7 @@ import UIKit
 class ListVC: UIViewController {
     
     private var screen: ListScreen?
-    private var viewModel: MenuProfileViewModel?
+    
     
     override func loadView() {
         screen = ListScreen()
@@ -45,7 +45,7 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: HolidayListTableViewCell.identifier, for: indexPath) as? HolidayListTableViewCell
         
-        cell?.setupCell(country: viewModel?.loadCurrentData(indexPath: ), holiday: <#T##String#>)
+        //cell?.setupCell(country: viewModel?.loadCurrentData(indexPath: Datum(localName: screen.countryLabel.text)), holiday: Data(Datum(localName: screen.holidayLabel.text)))
         
         return cell ?? UITableViewCell()
     }
