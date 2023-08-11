@@ -1,0 +1,13 @@
+// Features
+
+// HomeScreen:
+"subImageView" = "loginBackgroundImage";
+"animationView" = "animation_ll5ed43l";
+"nextButton" = "avançar";
+
+//ListScreen
+"backButtonImage" = "chevron.backward";
+
+
+"" = "";
+

@@ -1,0 +1,57 @@
+//
+//  ViewController.swift
+//  desafioIOS
+//
+//  Created by ALYSSON DODO on 09/08/23.
+//
+
+import UIKit
+
+class HomeVC: UIViewController {
+
+    private var screen: HomeScreen?
+    private var viewModel = MenuProfileViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func loadView() {
+        screen = HomeScreen()
+        view = screen
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        screen?.delegate(delegate: self)
+        screen?.configTextFieldDelegate(delegate: self)
+        viewModel.fetch(.request)
+    }
+
+
+}
+
+extension HomeVC: UITextFieldDelegate {
+    
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.loginScreen?.validarTextFields()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //print( "textFieldShouldReturn")
+        textField.resignFirstResponder()
+        
+        return true
+    }}
+
+extension HomeVC: HomeScreenProtocol {
+    func tappedButton() {
+        let vc = ListVC()
+        
+        navigationController?.pushViewController(vc, animated: true )
+    }
+    
+    
+}
